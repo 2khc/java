@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Dealer {
+public class Dealer implements IDealer {
 	private String name;
 
 	public Dealer(String name) {
@@ -24,17 +24,21 @@ public class Dealer {
 		}
 	}
 
-	public void dealHands(Deck deck, int numberOfPlayers) {
+	public List<Hand> dealHands(Deck deck, int numberOfPlayers) {
 		List<Hand> hands = new ArrayList<Hand>();
-		
-		for (int i=0;i<numberOfPlayers;i++){
+
+		for (int i = 0; i < numberOfPlayers; i++) {
 			Hand hand = new Hand();
 			hands.add(i, hand);
 		}
-		
-		for (int i = 0; i < hands.size(); i++) {
-			hands.get(i).addCard();
+
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < hands.size(); j++) {
+				ICard drawnCard = deck.draw();
+				hands.get(j).addCard(drawnCard);
+			}
 		}
+		return hands;
 	}
 
 }

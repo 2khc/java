@@ -3,7 +3,7 @@ package deckofcards;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Deck {
+public class Deck implements IDeck {
 	private final int NUMBER_OF_CARDS;
 	private List<ICard> cards;
 
