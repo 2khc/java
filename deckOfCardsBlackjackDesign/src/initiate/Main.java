@@ -13,7 +13,10 @@ public class Main {
 		IDeck deck = deckFactory.newInstance();
 		
 		IDealer dealer = new Dealer("Dolan");
+		dealer.shuffleDeck(deck);
 		IPlayer player = new Player(1);
+
+		dealer.dealHands(deck, 1);
 		
 	}
 }
