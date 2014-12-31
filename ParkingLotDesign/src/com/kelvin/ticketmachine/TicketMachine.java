@@ -6,13 +6,14 @@ import com.kelvin.parkinglot.IParkingLot;
 import com.kelvin.parkinglot.ParkingLot;
 
 public class TicketMachine implements ITicketMachine {
-	TicketType ticketType;
+	private IParkingLot parkingLot;
 	private int ticketMachineId;
 	private double totalMoneyInMachine;
 
-	public TicketMachine(int ticketMachineId) {
+	public TicketMachine(int ticketMachineId, IParkingLot parkingLot) {
 		this.ticketMachineId = ticketMachineId;
 		this.totalMoneyInMachine = 0;
+		this.parkingLot = parkingLot;
 	}
 
 	private double initTicketCost(TicketType ticketType) {
@@ -45,8 +46,8 @@ public class TicketMachine implements ITicketMachine {
 	public ITicket createTicket(int spaceId, TicketType ticketType) {
 		Calendar cal = getCalendar();
 		ITicket ticket = new Ticket(ticketType, cal);
-		acceptMoney(ticketType);
-
+		this.acceptMoney(ticketType);
+		this.parkingSpace = parkingLot.get(spaceId);
 		return ticket;
 	}
 

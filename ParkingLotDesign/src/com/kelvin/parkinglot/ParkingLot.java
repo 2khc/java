@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.kelvin.parkinglot.vehiclespace.BicycleSpace;
 import com.kelvin.parkinglot.vehiclespace.CarSpace;
-import com.kelvin.parkinglot.vehiclespace.ICarSpace;
+import com.kelvin.parkinglot.vehiclespace.IParkingSpace;
 import com.kelvin.parkinglot.vehiclespace.MotorbikeSpace;
 
 public class ParkingLot implements IParkingLot {
@@ -25,9 +25,6 @@ public class ParkingLot implements IParkingLot {
 
 	public void addParkingSpace(int carSpaces, int motorbikeSpaces, int bicycleSpaces) {
 		IParkingSpace space;
-		//IParkingSpace space;
-		// (IParkingSpace) new CarSpace();
-		//spaces.add(space);
 
 		for (int i = 0; i < carSpaces; i++) {
 			space = (IParkingSpace) new CarSpace();

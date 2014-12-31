@@ -2,6 +2,7 @@ package com.kelvin.parkinglot;
 
 import com.kelvin.parkinglot.vehiclespace.IParkingSpace;
 
+
 public abstract class ParkingSpace implements IParkingSpace {
 	protected IParkingSpace vehicle;
 	protected boolean isOccupied;
@@ -10,12 +11,12 @@ public abstract class ParkingSpace implements IParkingSpace {
 		this.isOccupied = false;
 	}
 
-	protected boolean occupyParkingSpace() {
+	public boolean occupyParkingSpace() {
 		this.isOccupied = true;
 		return this.isOccupied;
 	}
 
-	protected boolean unoccupyParkingSpace() {
+	public boolean unoccupyParkingSpace() {
 		this.isOccupied = false;
 		return this.isOccupied;
 	}
