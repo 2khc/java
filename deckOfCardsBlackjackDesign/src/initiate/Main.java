@@ -14,8 +14,8 @@ public class Main {
 		
 		IDealer dealer = new Dealer("Dolan");
 		dealer.shuffleDeck(deck);
-		//IPlayer player = new Player(1);
-
+		IPlayer player = new Player(1);
+		player.fold();
 		dealer.dealHands(deck, 1);
 		
 	}

@@ -27,6 +27,10 @@ public class Player implements IPlayer {
 	public void raiseBet() {
 		this.bet = +10;
 	}
+	
+	public int getBet(){
+		return this.bet;
+	}
 
 	public void hit(IDeck deck) {
 		this.hand.addCard(deck.draw());

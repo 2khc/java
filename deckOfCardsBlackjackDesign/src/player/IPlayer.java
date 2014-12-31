@@ -15,4 +15,5 @@ public interface IPlayer {
 
 	void fold();
 
+	int getBet();
 }

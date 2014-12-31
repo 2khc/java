@@ -44,4 +44,7 @@ public class Dealer implements IDealer {
 		return hands;
 	}
 
+	public String getDealerName(){
+		return this.name;
+	}
 }
