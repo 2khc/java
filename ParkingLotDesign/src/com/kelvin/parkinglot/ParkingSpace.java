@@ -1,17 +1,12 @@
 package com.kelvin.parkinglot;
 
-import com.kelvin.parkinglot.vehicles.IVehicleSpace;
+import com.kelvin.parkinglot.vehiclespace.IParkingSpace;
 
-public class ParkingSpace implements IParkingSpace {
-	protected IVehicleSpace vehicle;
+public abstract class ParkingSpace implements IParkingSpace {
+	protected IParkingSpace vehicle;
 	protected boolean isOccupied;
 
-	public ParkingSpace(IVehicleSpace vehicle) {
-//		switch (vehicle) {
-//		case("car"):
-//			car = 
-//		}
-		this.vehicle = vehicle;
+	public ParkingSpace() {
 		this.isOccupied = false;
 	}
 

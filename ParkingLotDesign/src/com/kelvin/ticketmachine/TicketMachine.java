@@ -2,6 +2,9 @@ package com.kelvin.ticketmachine;
 
 import java.util.Calendar;
 
+import com.kelvin.parkinglot.IParkingLot;
+import com.kelvin.parkinglot.ParkingLot;
+
 public class TicketMachine implements ITicketMachine {
 	TicketType ticketType;
 	private int ticketMachineId;
@@ -12,7 +15,7 @@ public class TicketMachine implements ITicketMachine {
 		this.totalMoneyInMachine = 0;
 	}
 
-	public double initTicketCost(TicketType ticketType) {
+	private double initTicketCost(TicketType ticketType) {
 		double ticketCost;
 		switch (ticketType) {
 		case HALFHOUR:
@@ -39,10 +42,11 @@ public class TicketMachine implements ITicketMachine {
 		}
 	}
 
-	public ITicket createTicket(TicketType ticketType) {
+	public ITicket createTicket(int spaceId, TicketType ticketType) {
 		Calendar cal = getCalendar();
 		ITicket ticket = new Ticket(ticketType, cal);
 		acceptMoney(ticketType);
+
 		return ticket;
 	}
 
@@ -53,9 +57,6 @@ public class TicketMachine implements ITicketMachine {
 
 	private Calendar getCalendar() {
 		Calendar cal = Calendar.getInstance();
-
-		// SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		// currentTime = sdf.format(cal.getTime());
 		return cal;
 	}
 }
