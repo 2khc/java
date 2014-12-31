@@ -22,6 +22,10 @@ public class ParkingLot implements IParkingLot {
 	public List<IParkingSpace> getParkingLot() {
 		return this.spaces;
 	}
+	
+	public IParkingSpace getParkingSpace(int spaceId) {
+		return spaces.get(spaceId);
+	}
 
 	public void addParkingSpace(int carSpaces, int motorbikeSpaces, int bicycleSpaces) {
 		IParkingSpace space;

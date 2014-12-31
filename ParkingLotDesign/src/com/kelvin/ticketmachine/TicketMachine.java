@@ -3,12 +3,13 @@ package com.kelvin.ticketmachine;
 import java.util.Calendar;
 
 import com.kelvin.parkinglot.IParkingLot;
-import com.kelvin.parkinglot.ParkingLot;
+import com.kelvin.parkinglot.vehiclespace.IParkingSpace;
 
 public class TicketMachine implements ITicketMachine {
 	private IParkingLot parkingLot;
 	private int ticketMachineId;
 	private double totalMoneyInMachine;
+	private IParkingSpace space;
 
 	public TicketMachine(int ticketMachineId, IParkingLot parkingLot) {
 		this.ticketMachineId = ticketMachineId;
@@ -47,7 +48,7 @@ public class TicketMachine implements ITicketMachine {
 		Calendar cal = getCalendar();
 		ITicket ticket = new Ticket(ticketType, cal);
 		this.acceptMoney(ticketType);
-		this.parkingSpace = parkingLot.get(spaceId);
+		this.space = parkingLot.getParkingSpace(spaceId);
 		return ticket;
 	}
 
