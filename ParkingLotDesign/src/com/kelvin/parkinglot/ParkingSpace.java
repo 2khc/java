@@ -1,14 +1,18 @@
 package com.kelvin.parkinglot;
 
-import java.time.LocalTime;
+import com.kelvin.parkinglot.vehicles.IVehicleSpace;
 
-public abstract class ParkingSpace implements IParkingSpace {
-	protected String vehicle;
+public class ParkingSpace implements IParkingSpace {
+	protected IVehicleSpace vehicle;
 	protected boolean isOccupied;
-	protected LocalTime leaseEnds;
 
-	public ParkingSpace() {
-
+	public ParkingSpace(IVehicleSpace vehicle) {
+//		switch (vehicle) {
+//		case("car"):
+//			car = 
+//		}
+		this.vehicle = vehicle;
+		this.isOccupied = false;
 	}
 
 	protected boolean occupyParkingSpace() {
@@ -20,5 +24,4 @@ public abstract class ParkingSpace implements IParkingSpace {
 		this.isOccupied = false;
 		return this.isOccupied;
 	}
-
 }

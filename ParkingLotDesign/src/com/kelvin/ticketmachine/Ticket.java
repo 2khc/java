@@ -1,45 +1,52 @@
 package com.kelvin.ticketmachine;
 
 import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Ticket implements ITicket {
 	TicketType ticketType;
-	private LocalTime ticketTime;
+	private Date ticketTime;
 
-	protected LocalTime created;
-	protected LocalTime expires;
+	protected Date created;
+	protected Date expires;
+	protected double cost;
 
-
-	public Ticket(LocalTime created, TicketType ticketType) {
-		this.created = created;
-		this.expires = initTicketTime(ticketType);
+	public Ticket(TicketType ticketType, Calendar cal) {
+		this.created = cal.getTime();
+		this.expires = initTicketTime(cal, ticketType);
 	}
 
-	private LocalTime initTicketTime(TicketType ticketType) {
+	private Date initTicketTime(Calendar cal, TicketType ticketType) {
+
 		switch (ticketType) {
 		case HALFHOUR:
-			ticketTime = ticketTime.plusMinutes(30);
+			cal.add(Calendar.MINUTE, 30);
+			ticketTime = cal.getTime();
 			return ticketTime;
 		case ONEHOUR:
-			ticketTime = ticketTime.plusHours(1);
+			cal.add(Calendar.HOUR_OF_DAY, 1);
+			ticketTime = cal.getTime();
 			return ticketTime;
 		case TWOHOURS:
-			ticketTime = ticketTime.plusHours(2);
+			cal.add(Calendar.HOUR_OF_DAY, 2);
+			ticketTime = cal.getTime();
 			return ticketTime;
 		case THREEHOURS:
-			ticketTime = ticketTime.plusHours(3);
+			cal.add(Calendar.HOUR_OF_DAY, 3);
+			ticketTime = cal.getTime();
 			return ticketTime;
 		case FOURHOURS:
-			ticketTime = ticketTime.plusHours(4);
+			cal.add(Calendar.HOUR_OF_DAY, 4);
+			ticketTime = cal.getTime();
 			return ticketTime;
 		case WHOLEDAY:
-			ticketTime = ticketTime.plusHours(24);
+			cal.add(Calendar.HOUR_OF_DAY, 24);
+			ticketTime = cal.getTime();
 			return ticketTime;
 		default:
 			System.out.println("Something failed");
 			return ticketTime;
 		}
 	}
-
-	
 }

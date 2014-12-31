@@ -1,5 +1,6 @@
 package com.kelvin.ticketmachine;
 
-public interface ITicket {
 
+public interface ITicket {
+	
 }
