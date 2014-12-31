@@ -22,7 +22,7 @@ public class ParkingLot implements IParkingLot {
 	public List<IParkingSpace> getParkingLot() {
 		return this.spaces;
 	}
-	
+
 	public IParkingSpace getParkingSpace(int spaceId) {
 		return spaces.get(spaceId);
 	}
@@ -31,17 +31,17 @@ public class ParkingLot implements IParkingLot {
 		IParkingSpace space;
 
 		for (int i = 0; i < carSpaces; i++) {
-			space = (IParkingSpace) new CarSpace();
+			space = new CarSpace();
 			spaces.add(space);
 		}
 
 		for (int i = 0; i < motorbikeSpaces; i++) {
-			space = (IParkingSpace) new MotorbikeSpace();
+			space = new MotorbikeSpace();
 			spaces.add(space);
 		}
 
 		for (int i = 0; i < bicycleSpaces; i++) {
-			space = (IParkingSpace) new BicycleSpace();
+			space = new BicycleSpace();
 			spaces.add(space);
 		}
 	}

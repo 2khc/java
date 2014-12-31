@@ -1,6 +1,5 @@
 package com.kelvin.parkinglot.vehiclespace;
 
-
 public abstract class ParkingSpace implements IParkingSpace {
 	protected IParkingSpace vehicle;
 	protected boolean isOccupied;

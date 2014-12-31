@@ -49,7 +49,16 @@ public class TicketMachine implements ITicketMachine {
 		ITicket ticket = new Ticket(ticketType, cal);
 		this.acceptMoney(ticketType);
 		this.space = parkingLot.getParkingSpace(spaceId);
+		this.space.occupyParkingSpace();
 		return ticket;
+	}
+
+	public double getTotalMoneyInMachine() {
+		return this.totalMoneyInMachine;
+	}
+
+	public int getTicketMachineId() {
+		return this.ticketMachineId;
 	}
 
 	private void acceptMoney(TicketType ticketType) {
@@ -61,4 +70,5 @@ public class TicketMachine implements ITicketMachine {
 		Calendar cal = Calendar.getInstance();
 		return cal;
 	}
+
 }
