@@ -5,19 +5,21 @@ import java.util.Queue;
 
 public class SongQueue implements ISongQueue {
 	private Queue<ISong> queue;
+	IOpenFileDialog openFileDialog;
 
-	public SongQueue() {
-		queue = new LinkedList<ISong>();
+	public SongQueue(IOpenFileDialog openFileDialog) {
+		this.queue = new LinkedList<ISong>();
+		this.openFileDialog = openFileDialog;
 	}
-
-	public void loadPlaylist() {
-
-	}
-
-	public void addSong(ISong song) {
-		queue.add(song);
-	}
-
 	
+	public void addSong(){
+		String fileDir = openFileDialog.getFileURI();
+		//this.queue.add(song);
+	}
+	
+	
+	public void loadPlaylist() {
+		
+	}
 
 }

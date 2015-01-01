@@ -9,7 +9,7 @@ public class Song implements ISong {
 		this.filePath = filePath;
 	}
 	
-	public String getSongName(){
+	public String getSongName() {
 		return this.name;
 	}
 }

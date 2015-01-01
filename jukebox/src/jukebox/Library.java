@@ -1,13 +1,12 @@
 package jukebox;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Hashtable;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Library implements ILibrary {
-	List<ISong> library = new ArrayList<ISong>();
+	Hashtable<String, ISong> library = new Hashtable<String, ISong>();
 	String name;
 	String fileDir;
 
@@ -23,11 +22,25 @@ public class Library implements ILibrary {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			name = new String(fc.getSelectedFile().getName());
 			fileDir = fc.getSelectedFile().getPath();
+			fileDir = correctURI(fileDir);
 			System.out.println("You chose to open: " + fc.getSelectedFile().getName());
 		}
-
 		ISong song = new Song(name, fileDir);
-		library.add(song);
+
+		library.put(name, song);
+		System.out.println(library.get(name).toString() + " <--- value obtained by library.get");
+
+	}
+	
+	private String correctURI(String uri) {
+		String str = uri.replace("\\", "/");
+		str = uri.replace("\\", "/");
+		return str;
+	}
+	
+
+	public ISong getSong(String name) {
+		return library.get(name);
 	}
 
 	public void watchFolder() {
