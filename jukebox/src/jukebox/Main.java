@@ -10,13 +10,13 @@ public class Main {
 		// library.addSong();
 		Player player = new Player();
 		IOpenFileDialog openFileDialog = new OpenFileDialog();
-		IMusicPlayer musicPlayer = new MusicPlayer(player, openFileDialog);
-		ICommandController commandController = new CommandController(musicPlayer);
+		ISongQueue songQueue = new SongQueue(openFileDialog);
+		IMusicPlayer musicPlayer = new MusicPlayer(player, openFileDialog, songQueue);
+		ICommandController commandController = new CommandController(musicPlayer, songQueue);
 		Scanner scanner = new Scanner(System.in);
 
-		// player.playSongFromFile();
+	
 		while (true) {
-			System.out.println("Welcome to broken shit");
 			String command = scanner.nextLine();
 			commandController.decipherCommand(command);
 		}

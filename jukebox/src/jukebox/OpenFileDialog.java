@@ -17,7 +17,6 @@ public class OpenFileDialog implements IOpenFileDialog {
 			// name = fc.getSelectedFile().getName();
 			fileDir = fc.getSelectedFile().getPath();
 			fileDir = correctURI(fileDir);
-			System.out.println("You chose to open: " + fc.getSelectedFile().getName());
 		}
 		return fileDir;
 	}
