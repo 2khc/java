@@ -23,10 +23,7 @@ public class Main {
 		
 		list.removeDuplicate();
 		System.out.println(list);
-		list.removeDuplicate();
-		System.out.println(list);
-		list.removeDuplicate();
-		System.out.println(list);
+	
 		
 	}
 }

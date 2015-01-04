@@ -85,22 +85,32 @@ public class KelvinLinkedList {
 	public void removeDuplicate() {
 		Node temp = head;
 		Node current = head;
-		//int i = 1;
+		// int i = 1;
 		Object tempData;
 		for (int i = 1; i < size(); i++) {
-			tempData = temp.getNext().getData();
-			current = current.getNext();
-			while (current.getNext() != null) {
-				if (tempData == current.getNext().getData()) {
+
+			temp = temp.getNext();
+			current = temp.getNext();
+			tempData = temp.getData();
+			while (current != null) {
+				if (tempData == current.getData()) {
 
 					remove(i);
-
+					temp = temp.getNext();
+					current = temp.getNext();
+					tempData = temp.getData();
 				} else {
 
 					current = current.getNext();
 				}
 			}
 		}
+	}
+
+	public boolean removeFromEnd(int i) {
+		int index = size() - i;
+		remove(index);
+		return true;
 	}
 
 	private class Node {
