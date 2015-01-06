@@ -5,35 +5,42 @@ import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class Dijkstra {
+import com.kelvin.lists.IStation;
 
-	public static void computePaths(Vertex source) {
-		source.minDistance = 0.;
-		PriorityQueue<Vertex> vertexQueue = new PriorityQueue<Vertex>();
+public class Dijkstra implements IDijkstra {
+
+	public static void computePaths(IStation source) {
+
+		source.setMinDistance(0.);
+		PriorityQueue<IStation> vertexQueue = new PriorityQueue<IStation>();
 		vertexQueue.add(source);
 
 		while (!vertexQueue.isEmpty()) {
-			Vertex u = vertexQueue.poll();
+			IStation u = vertexQueue.poll();
 
 			// visit each edge exiting u
-			for (Edge e : u.adjacencies) {
-				Vertex v = e.target;
-				double weight = e.weight;
-				double distanceThroughU = u.minDistance + weight;
-				if (distanceThroughU < v.minDistance) {
+			List<Edge> adjacencies = u.getAdjacencies();
+			for (Edge e : adjacencies) {
+				IStation v = e.getStation();
+				double weight = e.getWeight();
+				double uMinDistance = u.getMinDistance();
+				double distanceThroughU = uMinDistance + weight;
+				double vMinDistance = v.getMinDistance();
+				if (distanceThroughU < vMinDistance) {
 					vertexQueue.remove(v);
-					v.minDistance = distanceThroughU;
-					v.previous = u;
+					vMinDistance = distanceThroughU;
+					v.setPrevious(u);
 					vertexQueue.add(v);
 				}
 			}
 		}
 	}
 
-	public static List<Vertex> getShortestPathTo(Vertex target) {
-		List<Vertex> path = new ArrayList<Vertex>();
-		for (Vertex vertex = target; vertex != null; vertex = vertex.previous) {
-			path.add(vertex);
+	public static List<IStation> getShortestPathTo(IStation target) {
+		List<IStation> path = new ArrayList<IStation>();
+
+		for (IStation station = target; station != null; station = station.getPrevious()) {
+			path.add(station);
 		}
 		Collections.reverse(path);
 		return path;

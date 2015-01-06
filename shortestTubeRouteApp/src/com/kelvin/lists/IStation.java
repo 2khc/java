@@ -1,9 +1,19 @@
 package com.kelvin.lists;
 
+import java.util.List;
+
+import com.kelvin.init.Edge;
+
 public interface IStation {
-	String getLines();
+	IStation getPrevious();
 
-	void addLink(IStation station);
+	double getMinDistance();
 
-	void addLinks(IStation... stations);
+	List<Edge> getAdjacencies();
+
+	void setMinDistance(double minDistance);
+
+	void addLinks(double weight, IStation... stations);
+
+	void setPrevious(IStation station);
 }

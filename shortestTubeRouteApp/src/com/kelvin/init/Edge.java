@@ -1,13 +1,23 @@
 package com.kelvin.init;
 
-public class Edge {
+import com.kelvin.lists.IStation;
 
-	public final Vertex target;
-	public final double weight;
+public class Edge implements IEdge{
 
-	public Edge(Vertex argTarget, double argWeight) {
-		target = argTarget;
-		weight = argWeight;
+	private final IStation target;
+	private final double weight;
+
+	public Edge(IStation argTarget, double argWeight) {
+		this.target = argTarget;
+		this.weight = argWeight;
+	}
+
+	public IStation getStation() {
+		return this.target;
+	}
+	
+	public double getWeight() {
+		return this.weight;
 	}
 
 }

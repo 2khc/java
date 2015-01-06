@@ -6,20 +6,20 @@ import java.util.List;
 import com.kelvin.lists.IStation;
 import com.kelvin.lists.Station;
 
-public class StationFactory {
-	private List<IStation> picadilly;
+public class StationFactory implements IStationFactory {
+	private List<IStation> zoneOne;
 
 	public StationFactory() {
 
 	}
 
-	public void createStations() {
-		this.picadilly = new ArrayList<IStation>();
+	public List<IStation> createStations() {
+		this.zoneOne = new ArrayList<IStation>();
 
 		// Initialising Zone 1 ONLY
 		// Bakerloo line
 		IStation paddington = new Station("paddington");
-		
+
 		IStation edgwareRoad = new Station("edgware road");
 		IStation marylebone = new Station("marylebone");
 		IStation bakerStreet = new Station("baker street");
@@ -102,86 +102,148 @@ public class StationFactory {
 		// ===========================================================================================
 		// Circle Line
 
-		bakerStreet.addLinks(marylebone, regentsPark, greatPortlandStreet);
-		greatPortlandStreet.addLinks(bakerStreet, eustonSquare);
-		eustonSquare.addLinks(greatPortlandStreet, kingsCross);
-		kingsCross.addLinks(eustonSquare, euston, angel, farringdon, russelSquare);
-		farringdon.addLinks(kingsCross, barbican);
-		barbican.addLinks(farringdon, moorgate);
-		moorgate.addLinks(barbican, liverpoolStreet);
-		liverpoolStreet.addLinks(moorgate, aldgate, aldgateEast);
-		aldgate.addLinks(liverpoolStreet, towerHill);
-		towerHill.addLinks(aldgate, aldgateEast, monument);
-		monument.addLinks(towerHill, bank, moorgate, londonBridge, cannonStreet);
-		cannonStreet.addLinks(monument, mansionHouse);
-		mansionHouse.addLinks(cannonStreet, blackfriars);
-		blackfriars.addLinks(mansionHouse, temple);
-		temple.addLinks(blackfriars, embankment);
-		embankment.addLinks(temple, charingCross, waterloo, westminster);
-		westminster.addLinks(embankment, waterloo, greenPark, stJamesPark);
-		stJamesPark.addLinks(westminster, victoria);
-		victoria.addLinks(stJamesPark, greenPark, pimlico, sloaneSquare);
-		sloaneSquare.addLinks(victoria, southKensington);
-		southKensington.addLinks(sloaneSquare, gloucesterRoad, knightsbridge, earlsCourt);
-		gloucesterRoad.addLinks(southKensington, highStreetKensington, earlsCourt);
-		highStreetKensington.addLinks(gloucesterRoad, nottingHillGate, earlsCourt);
-		nottingHillGate.addLinks(highStreetKensington, queensway, bayswater);
-		bayswater.addLinks(nottingHillGate, paddington);
+		bakerStreet.addLinks(10, marylebone, regentsPark, greatPortlandStreet);
+		greatPortlandStreet.addLinks(10, bakerStreet, eustonSquare);
+		eustonSquare.addLinks(10, greatPortlandStreet, kingsCross);
+		kingsCross.addLinks(10, eustonSquare, euston, angel, farringdon, russelSquare);
+		farringdon.addLinks(10, kingsCross, barbican);
+		barbican.addLinks(10, farringdon, moorgate);
+		moorgate.addLinks(10, barbican, liverpoolStreet);
+		liverpoolStreet.addLinks(10, moorgate, aldgate, aldgateEast);
+		aldgate.addLinks(10, liverpoolStreet, towerHill);
+		towerHill.addLinks(10, aldgate, aldgateEast, monument);
+		monument.addLinks(10, towerHill, bank, moorgate, londonBridge, cannonStreet);
+		cannonStreet.addLinks(10, monument, mansionHouse);
+		mansionHouse.addLinks(10, cannonStreet, blackfriars);
+		blackfriars.addLinks(10, mansionHouse, temple);
+		temple.addLinks(10, blackfriars, embankment);
+		embankment.addLinks(10, temple, charingCross, waterloo, westminster);
+		westminster.addLinks(10, embankment, waterloo, greenPark, stJamesPark);
+		stJamesPark.addLinks(10, westminster, victoria);
+		victoria.addLinks(10, stJamesPark, greenPark, pimlico, sloaneSquare);
+		sloaneSquare.addLinks(10, victoria, southKensington);
+		southKensington.addLinks(10, sloaneSquare, gloucesterRoad, knightsbridge, earlsCourt);
+		gloucesterRoad.addLinks(10, southKensington, highStreetKensington, earlsCourt);
+		highStreetKensington.addLinks(10, gloucesterRoad, nottingHillGate, earlsCourt);
+		nottingHillGate.addLinks(10, highStreetKensington, queensway, bayswater);
+		bayswater.addLinks(10, nottingHillGate, paddington);
 
 		// Bakerloo Line
-		paddington.addLinks(edgwareRoad, bayswater);
-		edgwareRoad.addLinks(paddington, marylebone);
-		marylebone.addLinks(edgwareRoad, bakerStreet);
-		regentsPark.addLinks(bakerStreet, oxfordCircus);
-		oxfordCircus.addLinks(regentsPark, warrenStreet, greenPark, piccadillyCircus, tottenhamCourtRoad, bondStreet);
-		piccadillyCircus.addLinks(oxfordCircus, leicesterSquare, greenPark, charingCross);
-		charingCross.addLinks(piccadillyCircus, leicesterSquare, embankment);
-		waterloo.addLinks(embankment, lambethNorth, westminster, southwark);
-		lambethNorth.addLinks(waterloo, elephantAndCastle);
-		elephantAndCastle.addLinks(lambethNorth);
+		paddington.addLinks(10, edgwareRoad, bayswater);
+		edgwareRoad.addLinks(10, paddington, marylebone);
+		marylebone.addLinks(10, edgwareRoad, bakerStreet);
+		regentsPark.addLinks(10, bakerStreet, oxfordCircus);
+		oxfordCircus.addLinks(10, regentsPark, warrenStreet, greenPark, piccadillyCircus, tottenhamCourtRoad, bondStreet);
+		piccadillyCircus.addLinks(10, oxfordCircus, leicesterSquare, greenPark, charingCross);
+		charingCross.addLinks(10, piccadillyCircus, leicesterSquare, embankment);
+		waterloo.addLinks(10, embankment, lambethNorth, westminster, southwark);
+		lambethNorth.addLinks(10, waterloo, elephantAndCastle);
+		elephantAndCastle.addLinks(10, lambethNorth);
 
 		// Victoria Line
-		euston.addLinks(kingsCross, warrenStreet);
-		warrenStreet.addLinks(euston, goodgeStreet, oxfordCircus);
-		greenPark.addLinks(oxfordCircus, bondStreet, westminster, piccadillyCircus, hydeParkCorner, victoria);
-		pimlico.addLinks(victoria, vauxhall);
-		vauxhall.addLinks(pimlico);
+		euston.addLinks(10, kingsCross, warrenStreet);
+		warrenStreet.addLinks(10, euston, goodgeStreet, oxfordCircus);
+		greenPark.addLinks(10, oxfordCircus, bondStreet, westminster, piccadillyCircus, hydeParkCorner, victoria);
+		pimlico.addLinks(10, victoria, vauxhall);
+		vauxhall.addLinks(10, pimlico);
 
 		// Piccadilly Line
-		russelSquare.addLinks(kingsCross, holborn);
-		holborn.addLinks(russelSquare, tottenhamCourtRoad, chanceryLane, coventGarden);
-		coventGarden.addLinks(holborn, leicesterSquare);
-		leicesterSquare.addLinks(coventGarden, tottenhamCourtRoad, charingCross, piccadillyCircus);
-		hydeParkCorner.addLinks(greenPark, knightsbridge);
-		knightsbridge.addLinks(hydeParkCorner, southKensington);
-		earlsCourt.addLinks(highStreetKensington, gloucesterRoad, southKensington);
+		russelSquare.addLinks(10, kingsCross, holborn);
+		holborn.addLinks(10, russelSquare, tottenhamCourtRoad, chanceryLane, coventGarden);
+		coventGarden.addLinks(10, holborn, leicesterSquare);
+		leicesterSquare.addLinks(10, coventGarden, tottenhamCourtRoad, charingCross, piccadillyCircus);
+		hydeParkCorner.addLinks(10, greenPark, knightsbridge);
+		knightsbridge.addLinks(10, hydeParkCorner, southKensington);
+		earlsCourt.addLinks(10, highStreetKensington, gloucesterRoad, southKensington);
 
 		// Northern LIne
-		goodgeStreet.addLinks(warrenStreet, tottenhamCourtRoad);
-		angel.addLinks(kingsCross, oldStreet);
-		tottenhamCourtRoad.addLinks(goodgeStreet, leicesterSquare);
-		oldStreet.addLinks(angel, moorgate);
-		londonBridge.addLinks(monument, borough);
-		borough.addLinks(londonBridge, elephantAndCastle);
-		
-		//Central Line
-		queensway.addLinks(nottingHillGate,lancasterGate);
-		lancasterGate.addLinks(queensway,marbleArch);
-		marbleArch.addLinks(lancasterGate,bondStreet);
-		bondStreet.addLinks(marbleArch,oxfordCircus,bakerStreet,greenPark);
-		chanceryLane.addLinks(holborn,stPauls);
-		stPauls.addLinks(chanceryLane,bank);
-		bank.addLinks(stPauls,moorgate,londonBridge,liverpoolStreet,monument);
-		
-		
-		// Jubilee Line
-		southwark.addLinks(waterloo,londonBridge);
-		
-		//Hammersmith & City line
-		aldgateEast.addLinks(liverpoolStreet,towerHill);
-		
-		//Metropolitan line done.
-		
+		goodgeStreet.addLinks(10, warrenStreet, tottenhamCourtRoad);
+		angel.addLinks(10, kingsCross, oldStreet);
+		tottenhamCourtRoad.addLinks(10, goodgeStreet, leicesterSquare);
+		oldStreet.addLinks(10, angel, moorgate);
+		londonBridge.addLinks(10, monument, borough);
+		borough.addLinks(10, londonBridge, elephantAndCastle);
 
+		// Central Line
+		queensway.addLinks(10, nottingHillGate, lancasterGate);
+		lancasterGate.addLinks(10, queensway, marbleArch);
+		marbleArch.addLinks(10, lancasterGate, bondStreet);
+		bondStreet.addLinks(10, marbleArch, oxfordCircus, bakerStreet, greenPark);
+		chanceryLane.addLinks(10, holborn, stPauls);
+		stPauls.addLinks(10, chanceryLane, bank);
+		bank.addLinks(10, stPauls, moorgate, londonBridge, liverpoolStreet, monument);
+
+		// Jubilee Line
+		southwark.addLinks(10, waterloo, londonBridge);
+
+		// Hammersmith & City line
+		aldgateEast.addLinks(10, liverpoolStreet, towerHill);
+
+		// Metropolitan line done.
+
+		zoneOne.add(queensway);
+		zoneOne.add(lancasterGate);
+		zoneOne.add(marbleArch);
+		zoneOne.add(bondStreet);
+		zoneOne.add(chanceryLane);
+		zoneOne.add(stPauls);
+		zoneOne.add(bank);
+		zoneOne.add(southwark);
+		zoneOne.add(aldgateEast);
+		zoneOne.add(euston);
+		zoneOne.add(warrenStreet);
+		zoneOne.add(greenPark);
+		zoneOne.add(pimlico);
+		zoneOne.add(vauxhall);
+		zoneOne.add(russelSquare);
+		zoneOne.add(holborn);
+		zoneOne.add(coventGarden);
+		zoneOne.add(leicesterSquare);
+		zoneOne.add(hydeParkCorner);
+		zoneOne.add(knightsbridge);
+		zoneOne.add(earlsCourt);
+		zoneOne.add(goodgeStreet);
+		zoneOne.add(angel);
+		zoneOne.add(tottenhamCourtRoad);
+		zoneOne.add(oldStreet);
+		zoneOne.add(londonBridge);
+		zoneOne.add(borough);
+		zoneOne.add(bakerStreet);
+		zoneOne.add(greatPortlandStreet);
+		zoneOne.add(eustonSquare);
+		zoneOne.add(kingsCross);
+		zoneOne.add(farringdon);
+		zoneOne.add(barbican);
+		zoneOne.add(moorgate);
+		zoneOne.add(liverpoolStreet);
+		zoneOne.add(aldgate);
+		zoneOne.add(towerHill);
+		zoneOne.add(monument);
+		zoneOne.add(cannonStreet);
+		zoneOne.add(mansionHouse);
+		zoneOne.add(blackfriars);
+		zoneOne.add(temple);
+		zoneOne.add(embankment);
+		zoneOne.add(westminster);
+		zoneOne.add(stJamesPark);
+		zoneOne.add(victoria);
+		zoneOne.add(sloaneSquare);
+		zoneOne.add(southKensington);
+		zoneOne.add(gloucesterRoad);
+		zoneOne.add(highStreetKensington);
+		zoneOne.add(nottingHillGate);
+		zoneOne.add(bayswater);
+		zoneOne.add(paddington);
+		zoneOne.add(edgwareRoad);
+		zoneOne.add(marylebone);
+		zoneOne.add(regentsPark);
+		zoneOne.add(oxfordCircus);
+		zoneOne.add(piccadillyCircus);
+		zoneOne.add(charingCross);
+		zoneOne.add(waterloo);
+		zoneOne.add(lambethNorth);
+		zoneOne.add(elephantAndCastle);
+
+		return zoneOne;
 	}
 }
