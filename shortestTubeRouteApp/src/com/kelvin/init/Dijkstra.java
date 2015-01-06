@@ -19,7 +19,7 @@ public class Dijkstra implements IDijkstra {
 			IStation u = vertexQueue.poll();
 
 			// visit each edge exiting u
-			List<Edge> adjacencies = u.getAdjacencies();
+			List<Edge> adjacencies = u.getAdjacencies();	
 			for (Edge e : adjacencies) {
 				IStation v = e.getStation();
 				double weight = e.getWeight();
@@ -28,7 +28,7 @@ public class Dijkstra implements IDijkstra {
 				double vMinDistance = v.getMinDistance();
 				if (distanceThroughU < vMinDistance) {
 					vertexQueue.remove(v);
-					vMinDistance = distanceThroughU;
+					v.setMinDistance(distanceThroughU);
 					v.setPrevious(u);
 					vertexQueue.add(v);
 				}
