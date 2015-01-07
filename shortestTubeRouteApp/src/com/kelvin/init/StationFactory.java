@@ -3,7 +3,9 @@ package com.kelvin.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kelvin.lists.ILine;
 import com.kelvin.lists.IStation;
+import com.kelvin.lists.Line;
 import com.kelvin.lists.Station;
 
 public class StationFactory implements IStationFactory {
@@ -102,82 +104,155 @@ public class StationFactory implements IStationFactory {
 		// ===========================================================================================
 		// Circle Line
 
+		ILine circleLine = new Line("circle");
+		ILine piccadillyLine = new Line("piccadilly");
+		ILine jubileeLine = new Line("jubiliee");
+		ILine northernLine = new Line("northern");
+		ILine centralLine = new Line("central");
+		ILine victoriaLine = new Line("victora");
+		ILine bakerlooLine = new Line("bakerloo");
+		ILine metropolitanLine = new Line("metropolitan");
+		ILine hammersmithAndCityLine = new Line("hammersmithAndCityLine");
+		ILine districtLine = new Line("district");
+
 		bakerStreet.addLinks(10, marylebone, regentsPark, greatPortlandStreet);
+		bakerStreet.addLines(bakerlooLine, metropolitanLine, circleLine, hammersmithAndCityLine);
 		greatPortlandStreet.addLinks(10, bakerStreet, eustonSquare);
+		greatPortlandStreet.addLines(metropolitanLine, circleLine, hammersmithAndCityLine);
 		eustonSquare.addLinks(10, greatPortlandStreet, kingsCross);
+		eustonSquare.addLines(metropolitanLine, circleLine, hammersmithAndCityLine);
 		kingsCross.addLinks(10, eustonSquare, euston, angel, farringdon, russelSquare);
+		kingsCross.addLines(metropolitanLine, circleLine, hammersmithAndCityLine, northernLine, victoriaLine, piccadillyLine);
 		farringdon.addLinks(10, kingsCross, barbican);
+		farringdon.addLines(metropolitanLine, circleLine, hammersmithAndCityLine);
 		barbican.addLinks(10, farringdon, moorgate);
+		barbican.addLines(metropolitanLine, circleLine, hammersmithAndCityLine);
 		moorgate.addLinks(10, barbican, liverpoolStreet);
+		moorgate.addLines(metropolitanLine, circleLine, hammersmithAndCityLine, northernLine);
 		liverpoolStreet.addLinks(10, moorgate, aldgate, aldgateEast);
+		liverpoolStreet.addLines(metropolitanLine, circleLine, hammersmithAndCityLine, centralLine);
 		aldgate.addLinks(10, liverpoolStreet, towerHill);
+		aldgate.addLines(metropolitanLine, circleLine);
 		towerHill.addLinks(10, aldgate, aldgateEast, monument);
+		towerHill.addLines(circleLine, districtLine);
 		monument.addLinks(10, towerHill, bank, moorgate, londonBridge, cannonStreet);
+		monument.addLines(circleLine, districtLine, northernLine);
 		cannonStreet.addLinks(10, monument, mansionHouse);
+		cannonStreet.addLines(circleLine, districtLine);
 		mansionHouse.addLinks(10, cannonStreet, blackfriars);
+		mansionHouse.addLines(circleLine, districtLine);
 		blackfriars.addLinks(10, mansionHouse, temple);
+		blackfriars.addLines(circleLine, districtLine);
 		temple.addLinks(10, blackfriars, embankment);
+		temple.addLines(circleLine, districtLine);
 		embankment.addLinks(10, temple, charingCross, waterloo, westminster);
+		embankment.addLines(circleLine, districtLine, northernLine);
 		westminster.addLinks(10, embankment, waterloo, greenPark, stJamesPark);
+		westminster.addLines(circleLine, districtLine, jubileeLine);
 		stJamesPark.addLinks(10, westminster, victoria);
+		stJamesPark.addLines(circleLine, districtLine);
 		victoria.addLinks(10, stJamesPark, greenPark, pimlico, sloaneSquare);
+		victoria.addLines(circleLine, districtLine, victoriaLine);
 		sloaneSquare.addLinks(10, victoria, southKensington);
+		sloaneSquare.addLines(circleLine, districtLine);
 		southKensington.addLinks(10, sloaneSquare, gloucesterRoad, knightsbridge, earlsCourt);
+		southKensington.addLines(circleLine, districtLine, piccadillyLine);
 		gloucesterRoad.addLinks(10, southKensington, highStreetKensington, earlsCourt);
+		gloucesterRoad.addLines(circleLine, districtLine, piccadillyLine);
 		highStreetKensington.addLinks(10, gloucesterRoad, nottingHillGate, earlsCourt);
+		highStreetKensington.addLines(circleLine, districtLine);
 		nottingHillGate.addLinks(10, highStreetKensington, queensway, bayswater);
+		nottingHillGate.addLines(circleLine, districtLine, centralLine);
 		bayswater.addLinks(10, nottingHillGate, paddington);
+		bayswater.addLines(circleLine, districtLine);
 
 		// Bakerloo Line
 		paddington.addLinks(10, edgwareRoad, bayswater);
+		paddington.addLines(bakerlooLine, hammersmithAndCityLine, circleLine, districtLine);
 		edgwareRoad.addLinks(10, paddington, marylebone);
+		edgwareRoad.addLines(circleLine, hammersmithAndCityLine, districtLine);
 		marylebone.addLinks(10, edgwareRoad, bakerStreet);
+		marylebone.addLines(bakerlooLine);
 		regentsPark.addLinks(10, bakerStreet, oxfordCircus);
+		regentsPark.addLines(bakerlooLine);
 		oxfordCircus.addLinks(10, regentsPark, warrenStreet, greenPark, piccadillyCircus, tottenhamCourtRoad, bondStreet);
+		oxfordCircus.addLines(bakerlooLine, victoriaLine, centralLine);
 		piccadillyCircus.addLinks(10, oxfordCircus, leicesterSquare, greenPark, charingCross);
+		piccadillyCircus.addLines(bakerlooLine, piccadillyLine);
 		charingCross.addLinks(10, piccadillyCircus, leicesterSquare, embankment);
+		charingCross.addLines(bakerlooLine, northernLine);
 		waterloo.addLinks(10, embankment, lambethNorth, westminster, southwark);
+		waterloo.addLines(jubileeLine, northernLine, bakerlooLine);
 		lambethNorth.addLinks(10, waterloo, elephantAndCastle);
+		lambethNorth.addLines(bakerlooLine);
 		elephantAndCastle.addLinks(10, lambethNorth);
+		elephantAndCastle.addLines(bakerlooLine, northernLine);
 
 		// Victoria Line
 		euston.addLinks(10, kingsCross, warrenStreet);
+		euston.addLines(northernLine, victoriaLine);
 		warrenStreet.addLinks(10, euston, goodgeStreet, oxfordCircus);
+		warrenStreet.addLines(northernLine, victoriaLine);
 		greenPark.addLinks(10, oxfordCircus, bondStreet, westminster, piccadillyCircus, hydeParkCorner, victoria);
+		greenPark.addLines(piccadillyLine, victoriaLine, jubileeLine);
 		pimlico.addLinks(10, victoria, vauxhall);
+		pimlico.addLines(victoriaLine);
 		vauxhall.addLinks(10, pimlico);
+		vauxhall.addLines(victoriaLine);
 
 		// Piccadilly Line
 		russelSquare.addLinks(10, kingsCross, holborn);
+		russelSquare.addLines(piccadillyLine);
 		holborn.addLinks(10, russelSquare, tottenhamCourtRoad, chanceryLane, coventGarden);
+		holborn.addLines(piccadillyLine, centralLine);
 		coventGarden.addLinks(10, holborn, leicesterSquare);
+		coventGarden.addLines(piccadillyLine);
 		leicesterSquare.addLinks(10, coventGarden, tottenhamCourtRoad, charingCross, piccadillyCircus);
+		leicesterSquare.addLines(piccadillyLine, northernLine);
 		hydeParkCorner.addLinks(10, greenPark, knightsbridge);
+		hydeParkCorner.addLines(piccadillyLine);
 		knightsbridge.addLinks(10, hydeParkCorner, southKensington);
+		knightsbridge.addLines(piccadillyLine);
 		earlsCourt.addLinks(10, highStreetKensington, gloucesterRoad, southKensington);
+		earlsCourt.addLines(piccadillyLine, districtLine);
 
 		// Northern LIne
 		goodgeStreet.addLinks(10, warrenStreet, tottenhamCourtRoad);
+		goodgeStreet.addLines(northernLine);
 		angel.addLinks(10, kingsCross, oldStreet);
+		angel.addLines(northernLine);
 		tottenhamCourtRoad.addLinks(10, goodgeStreet, leicesterSquare);
+		tottenhamCourtRoad.addLines(northernLine, centralLine);
 		oldStreet.addLinks(10, angel, moorgate);
+		oldStreet.addLines(northernLine);
 		londonBridge.addLinks(10, monument, borough);
+		londonBridge.addLines(jubileeLine, northernLine);
 		borough.addLinks(10, londonBridge, elephantAndCastle);
+		borough.addLines(northernLine);
 
 		// Central Line
 		queensway.addLinks(10, nottingHillGate, lancasterGate);
+		queensway.addLines(centralLine);
 		lancasterGate.addLinks(10, queensway, marbleArch);
+		lancasterGate.addLines(centralLine);
 		marbleArch.addLinks(10, lancasterGate, bondStreet);
+		marbleArch.addLines(centralLine);
 		bondStreet.addLinks(10, marbleArch, oxfordCircus, bakerStreet, greenPark);
+		bondStreet.addLines(centralLine, jubileeLine);
 		chanceryLane.addLinks(10, holborn, stPauls);
+		chanceryLane.addLines(centralLine);
 		stPauls.addLinks(10, chanceryLane, bank);
+		stPauls.addLines(centralLine);
 		bank.addLinks(10, stPauls, moorgate, londonBridge, liverpoolStreet, monument);
+		bank.addLines(centralLine, northernLine);
 
 		// Jubilee Line
 		southwark.addLinks(10, waterloo, londonBridge);
+		southwark.addLines(jubileeLine);
 
 		// Hammersmith & City line
 		aldgateEast.addLinks(10, liverpoolStreet, towerHill);
+		aldgateEast.addLines(hammersmithAndCityLine);
 
 		// Metropolitan line done.
 

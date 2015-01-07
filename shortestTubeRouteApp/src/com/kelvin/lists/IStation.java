@@ -13,7 +13,15 @@ public interface IStation {
 
 	void setMinDistance(double minDistance);
 
+	ILine getLine();
+
 	void addLinks(double weight, IStation... stations);
 
 	void setPrevious(IStation station);
+
+	void setLine(IStation station);
+
+	List<ILine> getLines();
+
+	void addLines(ILine... lines);
 }

@@ -11,14 +11,15 @@ public class Main {
 		IStationFactory stationFactory = new StationFactory();
 
 		List<IStation> stations = stationFactory.createStations();
-
+		IDijkstra computer = new Dijkstra();
 		IStation startingStation = stations.get(0);
 		IStation endingStation = stations.get(10);
-		Dijkstra.computePaths(startingStation);
+		computer.computePaths(startingStation);
 		System.out.println("Beginning from station " + startingStation);
 		for (int i = 0; i < stations.size(); i++) {
-			paths = Dijkstra.getShortestPathTo(endingStation);
+			paths = computer.getShortestPathTo(endingStation);
 		}
 		System.out.println(paths);
+		System.out.println(computer.getLinePath());
 	}
 }

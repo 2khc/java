@@ -7,9 +7,9 @@ public class Edge implements IEdge{
 	private final IStation target;
 	private final double weight;
 
-	public Edge(IStation argTarget, double argWeight) {
-		this.target = argTarget;
-		this.weight = argWeight;
+	public Edge(IStation targetStation, double weight) {
+		this.target = targetStation;
+		this.weight = weight;
 	}
 
 	public IStation getStation() {
